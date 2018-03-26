@@ -5,7 +5,7 @@ This is the code for a fully functioning Django website built for deployment on 
 
 It could be potentially modified for anyone to create a website where anyone could vote for the best person for a specific name.
 
-However, these instructions will currently only cover how to get this running on your local environment. Getting a fully functioning website requires instructions far beyond the Django script with things like configuring AWS EB, S3, RDS, Route 53, ElasticSearch, ElasticCache, DNS Servers, CDN, SSL certificates etc. There are many guides online which should help you do this and you too can become an AWS master (watch out for those pesky Access Policies)!
+However, these instructions will currently only cover how to get this running on your local environment. Getting a fully functioning website requires instructions far beyond just knowing Django with things like configuring AWS EB, S3, RDS, Route 53, ElasticSearch, ElasticCache, DNS Servers, CDN, SSL certificates etc. There are many guides online which should help you do this and you too can become an AWS master (watch out for those pesky Access Policies)!
 
 Note: This might not be for beginners, I won't be explaining much as I go along, but simply the exact steps you need to get started. If you have never created a Django project before, you may want to do the tutorial to understand (Currently Django is on 2.0, but jeffchenseo was built on 1.11 so I recommend the 1.11 tutorial): https://docs.djangoproject.com/en/1.11/intro/install/.
 
@@ -44,6 +44,8 @@ nano .env
 Now you should be in the .env file
 
 Generate a new secret key here: https://www.miniwebtool.com/django-secret-key-generator/
+
+Paste this information into the .env file
 ```angular2html
 DJANGO_SECRET_KEY='zp7ywipy7k--$^b85s#5dl(u_7z(0k(o%blo6$wq&d33-2a=0%'
 
@@ -61,10 +63,10 @@ KEEN_WRITE_KEY=''
 
 Press ctrl+x to exit and 'y' to save changes
 
-6) Download Postgres
+6) Download Postgres.
 I recommend this site: https://postgresapp.com/
 
-7) Create a new Database called jeffchenseo
+7) Create a new database called jeffchenseo
 
 So here I am being lazy and just using a GUI to create the database: https://macpostgresclient.com/. I like this one the most, but it costs $40 (worth it imho). 
 
