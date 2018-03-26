@@ -1,0 +1,50 @@
+<script>
+    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+
+</script>
+
+{% if list_of_jeff_chens %}
+    <table class="table table-hover table-sm">
+        <tbody>
+        {% for jeff_chen in list_of_jeff_chens %}
+            {% include 'votes/table.html' %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination" style="justify-content:center;">
+    <span class="step-links">
+        {% if list_of_jeff_chens.has_previous %}
+            {% if query %}
+                <a href="?page={{ list_of_jeff_chens.previous_page_number }}&amp;q={{ query }}">
+            {% else %}
+                <a href="?page={{ list_of_jeff_chens.previous_page_number }}">
+            {% endif %}
+        <button class="mdc-button mdc-button--stroked"
+                style="margin-right: 20px;">Previous</button></a>
+        {% endif %}
+
+        <span class="current margin-10">
+            Page {{ list_of_jeff_chens.number }} of {{ list_of_jeff_chens.paginator.num_pages }}.
+        </span>
+
+        {% if list_of_jeff_chens.has_next %}
+            {% if query %}
+                <a href="?page={{ list_of_jeff_chens.next_page_number }}&amp;q={{ query }}">
+            {% else %}
+                <a href="?page={{ list_of_jeff_chens.next_page_number }}">
+            {% endif %}
+        <button class="mdc-button mdc-button--stroked"
+                style="margin-left: 20px;">Next</button></a>
+        {% endif %}
+    </span>
+    </div>
+{% else %}
+    <div class="alert alert-danger">
+        <p>Would you like to add a new Jeff Chen below? We couldn't find a
+            Jeff Chen matching your search :(</p>
+    </div>
+{% endif %}
+

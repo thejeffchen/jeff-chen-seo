@@ -1,0 +1,67 @@
+$mdc-theme-primary: #9c27b0;
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 1.4em;
+    background-color: #EEEEEE;
+}
+
+th {
+    font-weight: 900;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.drop-shadow-tr {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.drop-shadow-tr:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+}
+
+.light-text {
+    opacity: 0.54;
+}
+
+.pad-10 {
+    padding: 10px;
+}
+
+.pad-5 {
+    padding: 5px;
+}
+
+.modal-footer {
+    opacity: 0.54;
+    text-color: red;
+    font-size: 13px;
+}
+
+.table tbody > tr > td.vert-aligned {
+    vertical-align: middle;
+}
+
+#jumbotron-custom p {
+    font-size: 15px;
+    font-color: red;
+}
+
+.div-drop-shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#navbar {
+    background-color: #FFFFFF;
+}
+
+.margin-5 {
+    margin: 5px;
+}
+

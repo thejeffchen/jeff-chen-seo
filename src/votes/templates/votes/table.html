@@ -1,0 +1,215 @@
+<tr class="drop-shadow-tr pad-5">
+    <td class="vert-aligned">
+        <span>{% if jeff_chen.ranking == 1 %}
+            <i class="fa fa-trophy" style="color: #f1c40f"
+               aria-hidden="true"></i>
+        {% elif jeff_chen.ranking == 2 %}
+            <i class="fa fa-trophy" style="color: #bdc3c7"
+               aria-hidden="true"></i>
+        {% elif jeff_chen.ranking == 3 %}
+            <i class="fa fa-trophy" style="color: #cd7f32"
+               aria-hidden="true"></i>
+        {% endif %}
+            #{{ jeff_chen.ranking }}
+            / {{ count_all_jeff_chens }}</span>
+    </td>
+    <td class="vert-aligned">
+        <a data-toggle="lightbox"
+           href="{{ jeff_chen.profile_image.url }}"
+           data-title="{{ jeff_chen.name }}"
+           data-footer="{{ jeff_chen.name }} -
+                        {{ jeff_chen.job_title }}
+                        {% if jeff_chen.company %}
+                            at {{ jeff_chen.company }}
+                        {% endif %}
+                        ">
+            <img width="64px" class="rounded-circle img-fluid"
+                 style="min-width: 64px;"
+                 src="{{ jeff_chen.profile_image.url }}">
+        </a>
+    </td>
+    <td class="text-left">
+        <a class="collapsed" data-toggle="collapse"
+           href="#collapse_{{ jeff_chen.id }}"
+           aria-expanded="false"
+           aria-controls="collapse_{{ jeff_chen.id }}"
+           style="text-decoration: none; color: inherit;">
+            <div>
+                <b>{{ jeff_chen.name|truncatechars:45 }}</b></br>
+                <small>{{ jeff_chen.job_title|truncatechars:40 }}
+                    {% if jeff_chen.company %}
+                        at {{ jeff_chen.company|truncatechars:30 }}
+                    {% endif %}
+                </small>
+                </br>
+                <small class="light-text">
+                    {% if jeff_chen.city %}
+                        {{ jeff_chen.city|truncatechars:30 }},
+                    {% endif %}
+                    {% if jeff_chen.state %}
+                        {{ jeff_chen.state|truncatechars:15 }},
+                    {% endif %}
+                    {% if jeff_chen.country %}
+                        {{ jeff_chen.country|truncatechars:15 }}
+                    {% endif %}
+                </small>
+            </div>
+        </a>
+    </td>
+    <td>
+        <p><b>{{ jeff_chen.votes }}</b>
+            vote{{ jeff_chen.votes|pluralize }}</p>
+        {% if jeff_chen in list_of_every_jeff_chen_ip_has_voted %}
+            <button class="mdc-button mdc-button--raised margin-10" disabled>
+                Voted!
+            </button>
+        {% else %}
+            <form action="{% url 'votes:vote' jeff_chen.id %}"
+                  method="post" id="vote">
+                {% csrf_token %}
+                <input type="hidden" name="vote"
+                       value="{{ jeff_chen.id }}"/>
+                {% if debug %}
+                    <input class="mdc-button mdc-button--raised margin-10 mdc-theme--secondary-bg"
+                           type="submit"
+                           value="Vote"/>
+                {% else %}
+                    <input class="mdc-button mdc-button--raised margin-10 g-recaptcha mdc-theme--secondary-bg"
+                           type="submit"
+                           data-sitekey="6Lc6MjAUAAAAAH8BfR8AKSou-E6FYYusaZcZa6fg"
+                           data-callback="onSubmit" value="Vote"/>
+                {% endif %}
+            </form>
+        {% endif %}
+    </td>
+</tr>
+<tr>
+    <td colspan="4" id="accordion_{{ jeff_chen.id }}" role="tablist"
+        style="padding: 0px 0px 8px 0px; background-color: #EEEEEE; border-top: 0px;">
+        <a class="collapsed" data-toggle="collapse"
+           href="#collapse_{{ jeff_chen.id }}"
+           aria-expanded="false"
+           aria-controls="collapse_{{ jeff_chen.id }}">
+            <div class="drop-shadow-tr"
+                 style="background-color: #FFFFFF; padding: 0px 8px 8px 8px;">
+                <div class="card">
+                    <div class="card-header" role="tab"
+                         id="heading_{{ jeff_chen.id }}" style="padding: 8px;">
+                        <h5 class="mb-0">
+                            <small class="text-muted">SHARE THIS PROFILE</small>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <div id="collapse_{{ jeff_chen.id }}" class="collapse"
+             role="tabpanel"
+             aria-labeledby="heading_{{ jeff_chen.id }}"
+             data-parent="#accordion_{{ jeff_chen.id }}"
+             style="background-color: #FFFFFF; border: 1px;">
+            <div class="card-body">
+                <span style="float:left; padding-right:8px; text-align:left"><b>Share this URL for this Jeff Chen:</b></span></br>
+                <div class="input-group" style="max-width: 300px;">
+                    <input id="profile_url" class="form-control"
+                           value="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}">
+                    <button class="copy input-group-addon mdc-button mdc-button--raised"
+                            data-clipboard-text="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}">
+                        <i class="fa fa-clipboard"
+                           aria-hidden="true"></i>
+                    </button>
+                </div>
+                </br>
+                <span style="float:left; padding-right:8px; text-align:left"><b>Share Widget:</b></span>
+                </br>
+                <div style="padding: 20px; background-color: #EEEEEE;">
+                    <span style="float:left; padding-right:8px; text-align:left">Example Embed Vote Widget:</span></br>
+                    <div class="mdc-card"
+                         style="max-width: 336px; background-color: #fff;">
+                        <section class="mdc-card__primary"
+                                 style="padding:8px; display: flex; align-items: center;">
+                            <img src="{{ jeff_chen.profile_image.url }}"
+                                 ;
+                                 style="border-radius:64px; width:64px; float: left;">
+                            <div style="display: inline-block; padding-left:8px; padding-right: 14px; text-align:left;">
+                                <h3 class="mdc-card__title--large"><b>Vote
+                                    for Me</b>
+                                </h3>
+                                <h3 class="mdc-card__subtitle"
+                                    style="padding-bottom: 15px; font-size: 1em;">as the
+                                    best
+                                    <a
+                                            href="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}"
+                                            target="_blank">Jeff
+                                        Chen</a> on
+                                    jeffchenseo.com!</h3></div>
+                            <a href="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}"
+                               target="_blank">
+                                <button class="mdc-button mdc-button--raised"
+                                        style="background-color: #00c853;">
+                                    <b>Vote</b>
+                                </button>
+                            </a>
+                        </section>
+                    </div>
+                    </br>
+                    <span style="float:left; padding-right:8px; text-align:left;">HTML for Embed Vote Widget Above on Your Website:</span></br>
+                    <div class="input-group" style="max-width: 300px;">
+                        <input id="embed_url" class="form-control"
+                               value='<div class="mdc-card" style="max-width: 336px; background-color: #fff;"><section class="mdc-card__primary" style="padding:8px; display: flex; align-items: center;"><img src="{{ jeff_chen.profile_image.url }}"; style="border-radius:64px; width:64px; float: left;"><div style="display: inline-block; padding-left:8px; padding-right: 14px; text-align:left;"><h3 class="mdc-card__title--large"><b>Vote for Me</b></h3> <h3 class="mdc-card__subtitle" style="padding-bottom: 15px; font-size: 1em;">as the best <a href="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}" target="_blank">Jeff Chen</a> on jeffchenseo.com!</h3></div><a href="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}" target="_blank"><button class="mdc-button mdc-button--raised" style="background-color: #00c853;"><b>Vote</b></button></a></section></div><link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">'>
+                        <button class="copy input-group-addon mdc-button mdc-button--raised"
+                                data-clipboard-text='<div class="mdc-card" style="max-width: 336px; background-color: #fff;"><section class="mdc-card__primary" style="padding:8px; display: flex; align-items: center;"><img src="{{ jeff_chen.profile_image.url }}"; style="border-radius:64px; width:64px; float: left;"><div style="display: inline-block; padding-left:8px; padding-right: 14px; text-align:left;"><h3 class="mdc-card__title--large"><b>Vote for Me</b></h3> <h3 class="mdc-card__subtitle" style="padding-bottom: 15px">as the best <a href="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}" target="_blank">Jeff Chen</a> on jeffchenseo.com!</h3></div><a href="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}" target="_blank"><button class="mdc-button mdc-button--raised" style="background-color: #00c853;"><b>Vote</b></button></a></section></div><link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">'>
+                            <i class="fa fa-clipboard"
+                               aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                </br>
+                <span style="float:left; padding-right:8px; text-align:left"><b>Share this Jeff Chen on Social Media:</b></span></br>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}">
+                    <button class="mdc-button mdc-button--raised"
+                            style="margin:5px; background:#3b5998;">
+                        <i
+                                class="fa fa-facebook"
+                                aria-hidden="true"></i> Facebook
+                        Share This
+                        Profile
+                    </button>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}&title=Vote for me, {{ jeff_chen.name }} as the best Jeff Chen!&summary=Click here to vote for me, {{ jeff_chen.name }} {% if jeff_chen.city and jeff_chen.state %}from {{ jeff_chen.city }}, {{ jeff_chen.state }}{% endif %} as the Best (Most Popular) Jeff Chen on the Internet!">
+                    <button class="mdc-button mdc-button--raised"
+                            style="margin:5px; background:#0077B5;">
+                        <i class="fa fa-linkedin"
+                           aria-hidden="true"></i> LinkedIn Share
+                        This
+                        Profile
+                    </button>
+                </a>
+                <a href="https://twitter.com/share?text=Hey everyone, if you could vote for me here as the best Jeff Chen on the internet that would be awesome! https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}">
+                    <button class="mdc-button mdc-button--raised"
+                            style="background: #00ACEE;
+                                                    color: #fff;
+                                                    margin:5px;">
+                        <i class="fa fa-twitter fa-fw"></i> Tweet
+                        This
+                        Profile
+                    </button>
+                </a>
+
+                </br>
+            </div>
+        </div>
+    </td>
+</tr>
+
+<script>
+    var btn = document.getElementById('profile_url');
+    var clipboard = new Clipboard(btn);
+    clipboard.on('success', function (e) {
+        console.log(e);
+    });
+    clipboard.on('error', function (e) {
+        console.log(e);
+    });
+
+    new Clipboard('.copy');
+</script>

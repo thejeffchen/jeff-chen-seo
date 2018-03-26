@@ -1,0 +1,26 @@
+{% if popular_jeff_chens %}
+    <h2 style="padding-top: 20px;"><b>Popular Jeff Chens</b></h2>
+    <table class="table table-hover table-sm">
+        <tbody>{% for jeff_chen in popular_jeff_chens %}
+            {% include 'votes/table.html' %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination" style="justify-content: center;">
+    <span class="step-links">
+        {% if popular_jeff_chens.has_previous %}
+            <a href="?page={{ popular_jeff_chens.previous_page_number }}">
+                <button class="mdc-button mdc-button--stroked" style="margin-right: 20px;">Previous</button></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ popular_jeff_chens.number }} of {{ popular_jeff_chens.paginator.num_pages }}.
+        </span>
+
+        {% if popular_jeff_chens.has_next %}
+            <a href="?page={{ popular_jeff_chens.next_page_number }}">
+                <button class="mdc-button mdc-button--stroked" style="margin-left: 20px;">Next</button></a>
+        {% endif %}
+    </span>
+    </div>
+{% endif %}

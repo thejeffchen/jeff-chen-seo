@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-5" style="padding-top:10px; padding-bottom: 10px;">
+        <form id="searchform" action="" method="get" accept-charset="utf-8">
+            <div class="input-group">
+                <input class="form-control"
+                       id="searchbox" name="q" type="text"
+                       placeholder="Search Jeff by location, company, job...">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit" style="background-color: ">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+
+        </form>
+    </div>
+    {% if search_hits %}
+        <div class="col-md-6" style="display: flex; align-items: center;">
+            Jeff Chen{{ search_hits|pluralize }} that match your
+            search: {{ search_hits }}
+        </div>
+    {% endif %}
+</div>

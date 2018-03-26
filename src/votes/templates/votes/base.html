@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" class="mdc-typography">
+
+{% include 'votes/head.html' %}
+
+<body>
+
+{% include 'votes/navbar.html' %}
+
+{% if message %}
+    <div class="alert alert-success" role="alert" style="margin-bottom: 0px;">
+        {{ message }}
+    </div>
+{% endif %}
+
+{% if error %}
+    <div class="alert alert-danger" role="alert" style="margin-bottom: 0px;">
+        {{ error }}
+    </div>
+{% endif %}
+
+<div class="jumbotron"
+     style="background: url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-928248191884/media/jeff-chen-seo-bg-original.jpg') no-repeat center center;
+     padding: 10px;
+     margin-bottom: 0px;
+     background-size: cover"
+     id="bg-image">
+    {% include 'votes/intro.html' %}
+</div>
+
+
+<div class="container pad-10">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>window.mdc.autoInit();</script>
+
+{% include 'votes/footer.html' %}
+
+</body>
+</html>

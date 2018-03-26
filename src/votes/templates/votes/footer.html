@@ -1,0 +1,47 @@
+{% load static from staticfiles %}
+
+<script type="text/javascript">
+/* Defer CSS File */
+var defer_material_components_css = document.createElement('link');
+defer_material_components_css.rel = 'stylesheet';
+defer_material_components_css.href = 'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css';
+defer_material_components_css.type = 'text/css';
+var go_defer = document.getElementsByTagName('link')[0];
+go_defer.parentNode.insertBefore(defer_material_components_css, go_defer);
+
+var defer_google_fonts = document.createElement('link');
+defer_google_fonts.rel = 'stylesheet';
+defer_google_fonts.href = 'https://fonts.googleapis.com/css?family=Roboto:400,900';
+defer_google_fonts.type = 'text/css';
+var go_defer2 = document.getElementsByTagName('link')[0];
+go_defer2.parentNode.insertBefore(defer_google_fonts, go_defer2);
+
+var defer_lightbox = document.createElement('link');
+defer_lightbox.rel = 'stylesheet';
+defer_lightbox.href = 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.css';
+defer_lightbox.type = 'text/css';
+var go_defer3 = document.getElementsByTagName('link')[0];
+go_defer3.parentNode.insertBefore(defer_lightbox, go_defer3);
+
+var defer_custom_css = document.createElement('link');
+defer_custom_css.rel = 'stylesheet';
+defer_custom_css.href = '{% static 'votes/css/styles.css' %}';
+defer_custom_css.type = 'text/css';
+var go_defer4 = document.getElementsByTagName('link')[0];
+go_defer4.parentNode.insertBefore(defer_custom_css, go_defer4);
+
+/* Segment track clicks */
+
+  var link = document.getElementById('vote');
+  analytics.trackLink(link, 'CTA Clicked', {
+    location: 'Table',
+    color: 'Green',
+    text: 'Vote',
+    CTA: 'Vote',
+    category: 'Home Page',
+    type: 'Button',
+    pageTitle: document.title
+  });
+
+</script>
+

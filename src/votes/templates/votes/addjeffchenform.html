@@ -1,0 +1,123 @@
+{% load crispy_forms_tags %}
+{% load static from staticfiles %}
+
+<div class="card card-default div-drop-shadow"
+     style="max-width: 700px; margin: auto; margin-top: 20px; padding: 20px;">
+    <h2 id="addjeffchen"><b>Add Jeff Chen Here</b></h2>
+    <div class="mdc-form-field">
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong>
+            </p>{% endif %}
+        <form action="{% url 'votes:add' %}" method="post"
+              id="vote"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mdc-layout-grid">
+                <label>Name: Jeff Chen</label></br>
+                <div class="mdc-layout-grid__inner">
+                    <input type="hidden" name="name" value="Jeff Chen"/>
+                    <div class="mdc-form-field mdc-layout-grid__cell"
+                         style="display: block;">
+                        <div class="mdc-text-field"
+                             data-mdc-auto-init="MDCTextField">
+                            <label for="city" class="mdc-floating-label">
+                                City
+                            </label>
+                            <input id="city" type="text"
+                                   class="mdc-text-field__input" name="city"
+                                   required>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                    <div class="mdc-form-field mdc-layout-grid__cell"
+                         style="display: block;">
+                        <div class="mdc-text-field"
+                             data-mdc-auto-init="MDCTextField">
+                            <input id="state" type="text"
+                                   class="mdc-text-field__input" name="state"
+                                   required>
+                            <label for="state" class="mdc-floating-label">
+                                State
+                            </label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                    <div class="mdc-form-field mdc-layout-grid__cell"
+                         style="display: block;">
+                        <div class="mdc-text-field"
+                             data-mdc-auto-init="MDCTextField">
+                            <input id="country" type="text"
+                                   class="mdc-text-field__input" name="country"
+                                   required>
+                            <label for="country" class="mdc-floating-label">
+                                Country
+                            </label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-form-field mdc-layout-grid__cell"
+                         style="display: block;">
+                        <div class="mdc-text-field"
+                             data-mdc-auto-init="MDCTextField">
+                            <input id="job_title" type="text"
+                                   class="mdc-text-field__input"
+                                   name="job_title">
+                            <label for="job_title"
+                                   class="mdc-floating-label">
+                                Job Title
+                            </label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                    <div class="mdc-form-field mdc-layout-grid__cell"
+                         style="display: block;">
+                        <div class="mdc-text-field"
+                             data-mdc-auto-init="MDCTextField">
+                            <input id="company" type="text"
+                                   class="mdc-text-field__input" name="company">
+                            <label for="company" class="mdc-floating-label">
+                                Company
+                            </label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fieldWrapper"
+                     style="margin-top: 16px;">
+                    {{ form.profile_image.errors }}
+                    {{ form.profile_image.label_tag }}</br>
+                    <label class="custom-file"
+                           style="margin-bottom: 16px; max-width: 225px;">
+                        <input type="file" id="file"
+                               class="custom-file-input"
+                               name="profile_image"
+                               onchange="$('#upload-file-info').html(this.files[0].name)"
+                               required/>
+                        <span class="custom-file-control label label-info"
+                              id="upload-file-info"></span>
+                    </label>
+                </div>
+                <input type="hidden" name="add_jeff_chen"
+                       value="{{ jeff_chen.id }}"/>
+                {% if debug %}
+                    <input class="mdc-button mdc-button--raised margin-10 mdc-theme--secondary-bg"
+                           type="submit"
+                           value="Add Jeff Chen"/>
+                {% else %}
+                    <input class="mdc-button mdc-button--raised margin-10 g-recaptcha"
+                           type="submit"
+                           data-sitekey="6Lc6MjAUAAAAAH8BfR8AKSou-E6FYYusaZcZa6fg"
+                           data-callback="onSubmit"
+                           value="Add Jeff Chen"/>
+                {% endif %}
+
+                {% if uploaded_file_url %}
+                    <p>File uploaded</p>
+                {% endif %}
+            </div>
+        </form>
+
+    </div>
+</div>

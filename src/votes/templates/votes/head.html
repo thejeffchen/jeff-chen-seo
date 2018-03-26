@@ -1,0 +1,189 @@
+{% load static from staticfiles %}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO stuff -->
+    {% if not list_of_jeff_chens.has_previous %}
+        <meta name="robots" content="INDEX, FOLLOW">
+    {% else %}
+        <meta name="robots" content="NOINDEX, FOLLOW">
+    {% endif %}
+    {% if list_of_jeff_chens.has_previous %}
+        <link rel="prev"
+              href="https://www.jeffchenseo.com/?page={{ list_of_jeff_chens.previous_page_number }}"/>
+    {% endif %}
+
+    {% if list_of_jeff_chens.has_next %}
+        <link rel="next"
+              href="https://www.jeffchenseo.com/?page={{ list_of_jeff_chens.next_page_number }}"/>
+    {% endif %}
+    <link rel="canonical" href="https://www.jeffchenseo.com"/>
+    <link rel='shortcut icon' type='image/x-icon'
+          href='https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-928248191884/media/favicon.ico'/>
+
+    <!-- Facebook Open Graph and Meta Title / Description -->
+    {% if single_profile %}
+        {% for jeff_chen in list_of_jeff_chens %}
+            <title>Vote for {{ jeff_chen.name }} as the best Jeff Chen!</title>
+            <meta name="description"
+                  content="Click here to vote for {{ jeff_chen.name }}
+                        {% if jeff_chen.city and jeff_chen.state %}from
+                        {{ jeff_chen.city }}, {{ jeff_chen.state }}
+                        {% endif %} as the Best (Most Popular) Jeff Chen on
+                        the Internet! Add yourself to the list or read more
+                        about the unique history of Jeff Chen.">
+
+            <meta property="og:url"
+                  content="https://www.jeffchenseo.com/jeff-chen-{{ jeff_chen.id }}"/>
+            <meta property="og:type" content="website"/>
+            <meta property="og:title"
+                  content="Vote for {{ jeff_chen.name }} as the best Jeff Chen!"/>
+            <meta property="og:description"
+                  content="Click here to vote for me, {{ jeff_chen.name }}
+                   as the Best (Most Popular) Jeff Chen on the Internet!"/>
+            <meta property="og:image"
+                  content="{{ jeff_chen.profile_image.url }}"/>
+        {% endfor %}
+    {% else %}
+        <title>Jeff Chen SEO: Vote for The Best Jeff Chen On The Internet!
+        </title>
+        <meta name="description"
+              content="Jeff Chen SEO: Find out who is the best (most popular) Jeff Chen on the internet! Add yourself to the list or read more about the unique history of Jeff Chen.">
+        <meta property="og:url"
+              content="http://www.jeffchenseo.com"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title"
+              content="Jeff Chen SEO: Vote for The Best Jeff Chen On The Internet!"/>
+        <meta property="og:description"
+              content="Jeff Chen SEO: Find out who is the best (most popular) Jeff Chen on the internet! Add yourself to the list or read more about the unique history of Jeff Chen."/>
+        <meta property="og:image"
+              content="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-928248191884/media/jeff-chen-seo-bg-original.jpg"/>
+    {% endif %}
+
+    <!-- Pinterest -->
+    <meta name="p:domain_verify" content="9be9a03ac09f4c05a72061f3ebcb67bf"/>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+
+    <!-- Google Recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async
+            defer></script>
+
+    <!-- Google Analytics / Optimize -->
+    <style>.async-hide {
+        opacity: 0 !important
+    } </style>
+    <script>(function (a, s, y, n, c, h, i, d, e) {
+        s.className += ' ' + y;
+        h.start = 1 * new Date;
+        h.end = i = function () {
+            s.className = s.className.replace(RegExp(' ?' + y), '')
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function () {
+            i();
+            h.end = null
+        }, c);
+        h.timeout = c;
+    })(window, document.documentElement, 'async-hide', 'dataLayer', 4000,
+        {'GTM-PFFQC28': true});</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-106408617-1', 'auto');
+        ga('require', 'GTM-PFFQC28');
+        ga('send', 'pageview');
+    </script>
+
+    <!-- Clipboard.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"
+            async defer></script>
+
+    <!-- Segment -->
+    <script>
+        !function () {
+            var analytics = window.analytics = window.analytics || [];
+            if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {
+                analytics.invoked = !0;
+                analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
+                analytics.factory = function (t) {
+                    return function () {
+                        var e = Array.prototype.slice.call(arguments);
+                        e.unshift(t);
+                        analytics.push(e);
+                        return analytics
+                    }
+                };
+                for (var t = 0; t < analytics.methods.length; t++) {
+                    var e = analytics.methods[t];
+                    analytics[e] = analytics.factory(e)
+                }
+                analytics.load = function (t) {
+                    var e = document.createElement("script");
+                    e.type = "text/javascript";
+                    e.async = !0;
+                    e.src = ("https:" === document.location.protocol ? "https://" : "http://") + "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
+                    var n = document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(e, n)
+                };
+                analytics.SNIPPET_VERSION = "4.0.0";
+                analytics.load("bsNKxbjpNlNPAyIRE22AYzbVwR6LE1T0");
+                analytics.page();
+            }
+        }();
+    </script>
+
+    <!-- ChartJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"
+            async defer></script>
+
+    <!-- Icons -->
+    <script src="https://use.fontawesome.com/e612abbed3.js" async
+            defer></script>
+
+    <!-- Lightbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.js"
+            async defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap -->
+    {% load bootstrap4 %}
+    {% bootstrap_javascript %}
+    {% bootstrap_css %}
+    {% bootstrap_messages %}
+
+    <!-- Material Components -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900"
+          rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'votes/scss/styles.css' %}"/>
+
+    <script>
+        function onSubmit(token) {
+            document.getElementById("vote").submit();
+        }
+    </script>
+
+</head>

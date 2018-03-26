@@ -1,0 +1,74 @@
+<div class="card div-drop-shadow" style="max-width: 700px; margin: auto; margin-top: 20px;">
+    <h2 style="margin: 20px;" id="contact"><b>Contact Me</b></h2>
+    <div class="card-body mdc-form-field" style="padding-top: 0px;">
+        <form action="e/email/" id="greeting-form" method="post" style="width: 100%;">
+            {% csrf_token %}
+            <div class="mdc-layout-grid" style="padding: 0px">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-form-field mdc-layout-grid__cell"
+                         style="display: block;">
+                        <div class="mdc-text-field"
+                             data-mdc-auto-init="MDCTextField">
+                            <input id="from_email" type="email"
+                                   class="mdc-text-field__input"
+                                   name="from_email"
+                                   required>
+                            <label for="from_email"
+                                   class="mdc-floating-label">
+                                Your Email:
+                            </label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                    <div class="mdc-form-field mdc-layout-grid__cell"
+                         style="display: block;">
+                        <div class="mdc-text-field"
+                             data-mdc-auto-init="MDCTextField">
+                            <input id="subject" type="text"
+                                   class="mdc-text-field__input" name="subject"
+                                   required>
+                            <label for="subject" class="mdc-floating-label">
+                                Subject:
+                            </label>
+                            <div class="mdc-text-field__bottom-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdc-form-field" style="width: 100%;">
+                    <div class="mdc-text-field mdc-text-field--fullwidth mdc-text-field--textarea"
+                         data-mdc-auto-init="MDCTextField">
+                        <label for="message" class="mdc-floating-label">
+                            Message:
+                        </label>
+                        <textarea id="message" type="text"
+                                  class="mdc-text-field__input" rows="8"
+                                  name="message" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <button type="submit"
+                    class="mdc-button
+                   mdc-button--raised
+                   mdc-ripple-surface"
+                    data-mdc-auto-init="MDCRipple"
+                    style="display: block;"
+                    onclick="document.getElementById('sent_email').style.display='block';"
+            >
+                Send Email
+            </button>
+
+            <div class="mdc-snackbar"
+                 aria-live="assertive"
+                 aria-atomic="true"
+                 aria-hidden="true"
+                 style="display: none;"
+                 id="sent_email">
+                <div class="mdc-snackbar__text">Submitted Email!</div>
+                <div class="mdc-snackbar__action-wrapper">
+                    <button type="button"
+                            class="mdc-snackbar__action-button"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
