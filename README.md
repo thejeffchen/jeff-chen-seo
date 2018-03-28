@@ -68,11 +68,11 @@ I recommend this site: https://postgresapp.com/
 
 7) Create a new database called jeffchenseo
 
-So here I am being lazy and just using a GUI to create the database: https://macpostgresclient.com/. I like this one the most, but it costs $40 (worth it imho). 
+So here I like just using a GUI to create the database: https://macpostgresclient.com/. I like this one the most, but it costs $40 (worth it imho). 
 
 You could use the free one: https://www.pgadmin.org/, but I find the interface more confusing than useful. 
 
-Lastly, you can be hardcore and use the terminal for any changes you make to the database: https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb (I've done it before, but over time I find it incredibly time consuming for no reason. Using a GUI is far better)
+Lastly, you can use the terminal for any changes you make to the database: https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb (I've done it before, but over time I find it incredibly time consuming. Using a GUI is simpler)
 
 8) Migrate the Django tables to Postgres
 ```angular2html
