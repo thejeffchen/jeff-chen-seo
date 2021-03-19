@@ -40,7 +40,7 @@ django-redis-cache==1.7.1
 django-report-utils==0.3.15
 django-simple-redis-admin==1.4.0
 django-storages==1.6.5
-djangorestframework==3.7.3
+djangorestframework==3.11.2
 docker-py==1.7.2
 dockerpty==0.4.1
 docopt==0.6.2
