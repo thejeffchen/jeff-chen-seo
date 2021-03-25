@@ -80,7 +80,7 @@ pysolr==3.6.0
 python-dateutil==2.6.1
 PyTweening==1.0.3
 pytz==2017.2
-PyYAML==3.12
+PyYAML==5.4
 raven==6.3.0
 rcssmin==1.0.6
 redis==2.10.6
