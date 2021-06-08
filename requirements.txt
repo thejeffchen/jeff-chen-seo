@@ -66,7 +66,7 @@ oauth2client==4.1.2
 olefile==0.44
 openpyxl==2.4.9
 pathspec==0.5.0
-Pillow==4.2.1
+Pillow==8.2.0
 ply==3.10
 psycopg2==2.7.3
 pyasn1==0.3.5
