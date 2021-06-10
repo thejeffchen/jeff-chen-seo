@@ -15,7 +15,7 @@ chardet==3.0.4
 colorama==0.3.7
 cryptography==2.0.3
 csscompressor==0.9.4
-Django==1.11.3
+Django==2.2.24
 django-appconf==1.0.2
 django-background-tasks==1.1.11
 django-bootstrap3==9.0.0
