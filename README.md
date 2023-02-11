@@ -19,7 +19,7 @@ cd jeffchenseo
 
 2) Install virtualenv and create a new virtual environment
 ```angular2html
-pip3 install virtualenv
+sudo pip3 install virtualenv
 virtualenv venv
 source venv/bin/activate
 ```
