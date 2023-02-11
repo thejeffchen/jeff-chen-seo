@@ -74,6 +74,11 @@ You could use the free one: https://www.pgadmin.org/, but I find the interface m
 
 Lastly, you can use the terminal for any changes you make to the database: https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb (I've done it before, but over time I find it incredibly time consuming. Using a GUI is simpler)
 
+8) Install the new applications
+```
+pip3 install -r requirements.txt
+```
+
 8) Migrate the Django tables to Postgres
 ```angular2html
 python3 manage.py makemigrations
